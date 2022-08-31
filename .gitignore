@@ -4,6 +4,7 @@
 *error.log*
 
 .eslintcache
+.idea
 
 node_modules/
 yarn.lock
