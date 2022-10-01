@@ -15,6 +15,7 @@ import {
   ALL, BRANCH_PRIORITY, LEAF_PRIORITY, ALL_WITH_INDETERMINATE,
   ALL_CHILDREN, ALL_DESCENDANTS, LEAF_CHILDREN, LEAF_DESCENDANTS,
   ORDER_SELECTED, LEVEL, INDEX,
+  INPUT_DEBOUNCE_DELAY,
 } from '../constants'
 
 function sortValueByIndex(a, b) {
@@ -636,6 +637,14 @@ export default {
       type: [ Number, String ],
       default: 999,
     },
+
+    /**
+     * Sync search throttling delay.
+     */
+     inputDebounceDelay: {
+      type: Number,
+      default: INPUT_DEBOUNCE_DELAY,
+    },
   },
 
   data() {
@@ -892,10 +901,10 @@ export default {
       }
 
       if (this.flat) {
-        warning(
-          () => this.multiple,
-          () => 'You are using flat mode. But you forgot to add "multiple=true"?',
-        )
+        // warning(
+        //   () => this.multiple,
+        //   () => 'You are using flat mode. But you forgot to add "multiple=true"?',
+        // )
       }
 
       if (!this.flat) {
